@@ -7,16 +7,7 @@ const user2 = new Character('Ron', 'Swordsman');
 test('test add() method of Team class', () => {
   const myTeam = new Team();
   myTeam.add(user1);
-  const result = {
-    members: {
-      user1: {
-        _name: 'Garry',
-        _type: 'Magician',
-        health: 100,
-        level: 1,
-      },
-    },
-  };
+  const result = { members: new Set([user1]) };
   expect(myTeam).toEqual(result);
 });
 
@@ -32,23 +23,8 @@ test('test Error add() method of Team class', () => {
 
 test('test addAll() method of Team class', () => {
   const myTeam = new Team();
-  myTeam.add(user1, user2);
-  const result = {
-    members: {
-      user1: {
-        _name: 'Garry',
-        _type: 'Magician',
-        health: 100,
-        level: 1,
-      },
-      user2: {
-        _name: 'Ron',
-        _type: 'Swordsman',
-        health: 100,
-        level: 1,
-      },
-    },
-  };
+  myTeam.addAll(user1, user2);
+  const result = { members: new Set([user1, user2]) };
   expect(myTeam).toEqual(result);
 });
 test('test toArray() method of Team class', () => {
